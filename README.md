@@ -152,11 +152,11 @@ it operates at, because that determines the job it can do:
 
 ## Person of contact supporting this challenge
 
-- Preston (full name to be added by EnAccess)
+- Preston Adie
 
 ## Getting started
 
-- Join the OSEAS Discord server: <https://community.oseas.org/>
+- Questions about this challenge? Join the OSEAS Discord server: <https://community.oseas.org/> — that's where you reach the case givers and mentors, before kickoff and throughout the hackathon. 
 - Introduce yourself in the `#introductions` channel and join the relevant
   channels for this challenge.
 - Read the documentation:
