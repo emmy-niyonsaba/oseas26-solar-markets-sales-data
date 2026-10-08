@@ -1,0 +1,80 @@
+"""Static documentation content served by the API (single source of truth for the UI and docs)."""
+
+DATA_SOURCES = [
+    {
+        "id": "surveys", "name": "DHS / MICS / MTF household surveys",
+        "description": "Household surveys with GPS cluster locations and questions on solar ownership and electricity source.",
+        "year": "Varies by country (e.g. latest DHS wave)", "resolution": "Survey cluster (displaced GPS point)",
+        "role": "Training labels (ground truth for solar penetration)",
+        "limitations": "GPS displacement of up to several km; limited cluster coverage; survey year differs from satellite year.",
+        "demo_substitute": "Synthetic clusters generated with the same schema.",
+    },
+    {
+        "id": "night_lights", "name": "NASA Black Marble / VIIRS nighttime lights",
+        "description": "Annual composites of night-time radiance.",
+        "year": "Annual composites", "resolution": "~500 m (aggregated to the model grid)",
+        "role": "Predictive feature: nighttime radiance",
+        "limitations": "Cannot reliably detect small solar home systems or pico-solar products. Low light does not mean no solar.",
+        "demo_substitute": "Synthetic radiance driven by population and grid proximity.",
+    },
+    {
+        "id": "population", "name": "WorldPop / Meta HRSL population",
+        "description": "Gridded population estimates.",
+        "year": "Annual / periodic", "resolution": "~100 m (summed to the model grid)",
+        "role": "Features: population density and population total",
+        "limitations": "Modelled estimates; rural accuracy varies; may differ from census counts.",
+        "demo_substitute": "Synthetic urban peaks over a noisy rural base.",
+    },
+    {
+        "id": "wealth", "name": "Meta Relative Wealth Index",
+        "description": "Estimated relative wealth from satellite imagery and connectivity data.",
+        "year": "~2021", "resolution": "2.4 km tiles",
+        "role": "Feature: relative wealth",
+        "limitations": "Relative, not absolute; modelled; may lag current conditions.",
+        "demo_substitute": "Synthetic index correlated with population and grid proximity.",
+    },
+    {
+        "id": "grid", "name": "Gridfinder / OpenStreetMap / EAE infrastructure",
+        "description": "Predicted and mapped electricity transmission and distribution lines.",
+        "year": "Varies", "resolution": "Vector lines",
+        "role": "Features: distance to grid, grid presence",
+        "limitations": "Incomplete in rural areas; mapped is not the same as energised or connected.",
+        "demo_substitute": "Synthetic lines connecting the main towns.",
+    },
+    {
+        "id": "minigrids", "name": "Minigrid datasets",
+        "description": "Existing or planned minigrid locations.",
+        "year": "Varies", "resolution": "Points / polygons",
+        "role": "Features: distance to minigrid, minigrid presence",
+        "limitations": "Operational status often unknown; coverage differs by country.",
+        "demo_substitute": "Twelve randomly placed synthetic sites.",
+    },
+    {
+        "id": "solar", "name": "Global Solar Atlas (GHI)",
+        "description": "Long-term average global horizontal irradiation.",
+        "year": "Long-term average", "resolution": "~1 km",
+        "role": "Feature: solar resource",
+        "limitations": "Long-term averages; ignores local shading and weather variability.",
+        "demo_substitute": "Synthetic values near 5 kWh/m2/day with a mild gradient.",
+    },
+    {
+        "id": "gogla", "name": "GOGLA sales data",
+        "description": "Aggregated national sales of off-grid solar products.",
+        "year": "Semi-annual / annual", "resolution": "National",
+        "role": "National control total / sanity check only (never a pixel-level label)",
+        "limitations": "Aggregated, covers affiliated companies only; sales are not the same as households currently using a product.",
+        "demo_substitute": "Synthetic national totals derived from hidden demo ground truth.",
+    },
+]
+
+LIMITATIONS = [
+    "Survey locations may be spatially displaced.",
+    "Survey years may differ from satellite years.",
+    "Small solar systems may not be visible from satellites.",
+    "Predictions outside training regions may be uncertain.",
+    "Model accuracy varies geographically.",
+    "GOGLA data is aggregated.",
+    "Low predicted penetration does not automatically mean commercial viability.",
+    "Model predictions should be validated with field data.",
+    "Feature importance does not establish causality.",
+]
