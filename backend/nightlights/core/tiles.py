@@ -1,7 +1,7 @@
 """Tile-grid geometry for VNP46 (10° x 10° geographic tiles)."""
 import re
 
-from config import TILE_DEG
+from ..config import TILE_DEG
 
 
 def tile_for(lat: float, lon: float) -> tuple:

@@ -3,7 +3,7 @@ from datetime import date, timedelta
 
 import requests
 
-from config import COLLECTION, LAADS, PRODUCT
+from ..config import COLLECTION, LAADS, PRODUCT
 
 
 def _day_path(year: int, doy: int) -> str:

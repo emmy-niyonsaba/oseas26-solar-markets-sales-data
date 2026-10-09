@@ -6,7 +6,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Nighttime Lights", page_icon="🌙", layout="wide")
 
-from core.reader import load_dataset  # noqa: E402
+from nightlights.core.reader import load_dataset  # noqa: E402
 from ui.kpis import render_kpis  # noqa: E402
 from ui.listing import render_listing  # noqa: E402
 from ui.sidebar import render_sidebar  # noqa: E402

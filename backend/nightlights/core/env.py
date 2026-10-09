@@ -2,7 +2,7 @@
 import os
 from pathlib import Path
 
-ENV_FILE = Path(__file__).resolve().parents[1] / ".env"
+ENV_FILE = Path(__file__).resolve().parents[2] / ".env"
 
 
 def load_env(path: Path = ENV_FILE) -> None:

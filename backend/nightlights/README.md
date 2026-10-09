@@ -43,5 +43,5 @@ You need:
 
 ### 2. Put the token in `.env`
 
-Create the file `nightlights/.env` (it's already gitignored, so it will never
+Create the file `backend/.env` (it's already gitignored, so it will never
 be committed):

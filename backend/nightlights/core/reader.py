@@ -6,8 +6,8 @@ import h5py
 import numpy as np
 import streamlit as st
 
-from config import GRID, GRID_GROUP, QUALITY_LAYER
-from core.tiles import tile_bounds
+from ..config import GRID, GRID_GROUP, QUALITY_LAYER
+from .tiles import tile_bounds
 
 
 @dataclass

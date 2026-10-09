@@ -5,15 +5,15 @@ from contextlib import contextmanager
 import fsspec
 import h5py
 
-from config import TOKEN_ENV
-from core.env import load_env
+from ..config import TOKEN_ENV
+from .env import load_env
 
 
 def get_token() -> str:
     load_env()
     token = os.environ.get(TOKEN_ENV, "")
     if not token:
-        raise RuntimeError(f"{TOKEN_ENV} is not set (put it in nightlights/.env)")
+        raise RuntimeError(f"{TOKEN_ENV} is not set (put it in backend/.env)")
     return token
 
 

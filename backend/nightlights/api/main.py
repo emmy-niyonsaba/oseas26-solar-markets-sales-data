@@ -4,9 +4,9 @@ from typing import List, Optional
 from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel, Field
 
-from config import UNIT
-from core import catalog
-from core.sampling import LAYER, sample_area, sample_points
+from ..config import UNIT
+from ..core import catalog
+from ..core.sampling import LAYER, sample_area, sample_points
 
 app = FastAPI(title="Nightlights API", version="0.4.0",
               description="VIIRS nighttime-light features streamed directly from NASA LAADS.")

@@ -2,10 +2,10 @@
 import time
 from datetime import date, datetime
 
-from config import COLLECTION, LAADS, PRODUCT
-from core import nasa
-from core.remote import get_token
-from core.tiles import tile_bounds, tile_for
+from ..config import COLLECTION, LAADS, PRODUCT
+from . import nasa
+from .remote import get_token
+from .tiles import tile_bounds, tile_for
 
 _TTL = 3600  # seconds to remember a successful lookup
 _cache: dict = {}
