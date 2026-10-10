@@ -6,7 +6,7 @@ export const PALETTES = {
   population: ["#f4f1f8", "#cfc3e3", "#a28ac6", "#7152a3", "#43276f"],
   night_lights: ["#0f1b2e", "#2d3f66", "#6a7fa6", "#c9c28a", "#f6e7a1"],
   grid: ["#eef2f6", "#c3cfdc", "#8ea1b8", "#56708f", "#2a3f5c"],
-  solar_resource: ["#fff6d8", "#fbe08a", "#f6c244", "#eb9b1d", "#c96a0b"],
+ solar_resource: ["#edeff2", "#063881"],
 };
 
 const rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
