@@ -101,6 +101,7 @@ class DataService:
         return self._cache[code]
 
     def cells(self, code: str, include_nightlights: bool = False) -> pd.DataFrame:
+        code = code.upper()
         data = self._load(code)
         meta = data["meta"]
         if include_nightlights and meta.get("is_demo") and \
@@ -109,9 +110,16 @@ class DataService:
                 if "nighttime_radiance" not in meta.get("sources", {}):
                     from nightlights.core.sampling import sample_radiance
 
-                    data["cells"]["nighttime_radiance"] = sample_radiance(
-                        list(zip(data["cells"]["lat"], data["cells"]["lon"]))
-                    )
+                    try:
+                        radiance = sample_radiance(
+                            list(zip(data["cells"]["lat"], data["cells"]["lon"]))
+                        )
+                    except Exception as exc:
+                        logger.exception("NASA nightlight sampling failed for %s", code)
+                        raise DataNotReadyError(
+                            f"NASA nightlight data unavailable for {code}: {exc}"
+                        ) from exc
+                    data["cells"]["nighttime_radiance"] = radiance
                     self._save_nightlight_values(code, data["cells"], meta)
         return data["cells"]
 

@@ -4,6 +4,7 @@ from contextlib import contextmanager
 
 import fsspec
 import h5py
+from aiohttp import ClientTimeout
 
 from ..config import TOKEN_ENV
 from .env import load_env
@@ -19,7 +20,11 @@ def get_token() -> str:
 
 @contextmanager
 def open_h5(url: str):
-    fs = fsspec.filesystem("https", headers={"Authorization": f"Bearer {get_token()}"})
+    fs = fsspec.filesystem(
+        "https",
+        headers={"Authorization": f"Bearer {get_token()}"},
+        client_kwargs={"timeout": ClientTimeout(total=30, connect=5, sock_read=20)},
+    )
     raw = fs.open(url, "rb", block_size=2 * 1024 * 1024,
                   cache_type="blockcache", cache_options={"maxblocks": 64})
     try:

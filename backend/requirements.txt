@@ -18,3 +18,4 @@ httpx>=0.27
 h5py
 fsspec
 requests
+aiohttp
